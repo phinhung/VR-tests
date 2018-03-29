@@ -105,7 +105,7 @@ namespace VRTK
         protected bool[] clonedObjectColliderStates = new bool[0];
         protected VRTK_BaseHighlighter objectHighlighter;
         protected bool willSnap = false;
-        protected bool isSnapped = false;
+		public bool isSnapped = false;
         protected bool wasSnapped = false;
         protected bool isHighlighted = false;
         protected Coroutine transitionInPlace;
@@ -177,6 +177,16 @@ namespace VRTK
         /// the ForceSnap method attempts to automatically attach a valid game object to the snap drop zone.
         /// </summary>
         /// <param name="objectToSnap">The GameObject to attempt to snap.</param>
+
+		public Vector3 posleft;
+		public Vector3 posright;
+
+		// Update is called once per frame
+	
+
+			
+
+		
         public virtual void ForceSnap(GameObject objectToSnap)
         {
             VRTK_InteractableObject ioCheck = objectToSnap.GetComponentInParent<VRTK_InteractableObject>();
@@ -190,11 +200,13 @@ namespace VRTK
                     StartCoroutine(AttemptForceSnapAtEndOfFrame(objectToSnap));
                 }
                 else
-                {
+				{	//if (posleft > allowed | posright > allowed){
                     AttemptForceSnap(objectToSnap);
-                }
+					//}
+				}
             }
         }
+
 
         /// <summary>
         /// The ForceUnsnap method attempts to automatically remove the current snapped game object from the snap drop zone.
@@ -274,6 +286,13 @@ namespace VRTK
 
         protected virtual void Update()
         {
+			GameObject left = GameObject.Find ("LeftHand");
+			posleft = left.GetComponent<PositionLeftHand> ().positionleft;
+
+
+			GameObject right = GameObject.Find ("RightHand");
+			posright = right.GetComponent<PositionRightHand> ().positionright;
+
             CheckSnappedItemExists();
             CheckPrefabUpdate();
             CreateHighlightersInEditor();
