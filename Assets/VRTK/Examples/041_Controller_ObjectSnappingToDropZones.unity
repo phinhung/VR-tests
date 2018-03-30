@@ -884,7 +884,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 259
+      value: 578
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
@@ -2204,6 +2204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posleft: {x: 0, y: 0, z: 0}
   posright: {x: 0, y: 0, z: 0}
+  Distanceri: 0
+  Distancele: 0
 --- !u!1 &2123877843
 GameObject:
   m_ObjectHideFlags: 0
