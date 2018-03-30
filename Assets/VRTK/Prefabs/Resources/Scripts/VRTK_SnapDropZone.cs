@@ -183,7 +183,7 @@ namespace VRTK
 
 		// Update is called once per frame
 	
-
+		public float allowedDistance;
 			
 
 		
@@ -200,9 +200,9 @@ namespace VRTK
                     StartCoroutine(AttemptForceSnapAtEndOfFrame(objectToSnap));
                 }
                 else
-				{	//if (posleft > allowed | posright > allowed){
+				{
                     AttemptForceSnap(objectToSnap);
-					//}
+
 				}
             }
         }
@@ -283,6 +283,9 @@ namespace VRTK
                 ForceSnap(defaultSnappedObject);
             }
         }
+		public float Distanceri;
+		public float Distancele;
+		private Vector3 center; 
 
         protected virtual void Update()
         {
@@ -292,6 +295,12 @@ namespace VRTK
 
 			GameObject right = GameObject.Find ("RightHand");
 			posright = right.GetComponent<PositionRightHand> ().positionright;
+
+			Distanceri = Vector3.Distance (posright,center);
+			Debug.Log (Distanceri);
+
+			Distancele = Vector3.Distance (posleft,center);
+			Debug.Log (Distancele);
 
             CheckSnappedItemExists();
             CheckPrefabUpdate();
@@ -481,43 +490,41 @@ namespace VRTK
         }
 
         protected virtual void SnapObject(Collider collider)
-        {
-            VRTK_InteractableObject ioCheck = ValidSnapObject(collider.gameObject, false);
-            //If the item is in a snappable position and this drop zone isn't snapped and the collider is a valid interactable object
-            if (willSnap && !isSnapped && ioCheck != null)
-            {
-                //Only snap it to the drop zone if it's not already in a drop zone
-                if (!ioCheck.IsInSnapDropZone())
-                {
-                    if (highlightObject != null)
-                    {
-                        //Turn off the drop zone highlighter
-                        highlightObject.SetActive(false);
-                    }
+		{
+			
+				VRTK_InteractableObject ioCheck = ValidSnapObject (collider.gameObject, false);
+				//If the item is in a snappable position and this drop zone isn't snapped and the collider is a valid interactable object
+			if (Distancele > allowedDistance | Distanceri > allowedDistance && ioCheck.IsGrabbed ()==true ) {
+				if (willSnap && !isSnapped && ioCheck != null) {
+					//Only snap it to the drop zone if it's not already in a drop zone
+					if (!ioCheck.IsInSnapDropZone ()) {
+						if (highlightObject != null) {
+							//Turn off the drop zone highlighter
+							highlightObject.SetActive (false);
+						}
 
-                    Vector3 newLocalScale = GetNewLocalScale(ioCheck);
-                    if (transitionInPlace != null)
-                    {
-                        StopCoroutine(transitionInPlace);
-                    }
+						Vector3 newLocalScale = GetNewLocalScale (ioCheck);
+						if (transitionInPlace != null) {
+							StopCoroutine (transitionInPlace);
+						}
 
-                    isSnapped = true;
-                    currentSnappedObject = ioCheck.gameObject;
-                    if (cloneNewOnUnsnap)
-                    {
-                        CreatePermanentClone();
-                    }
+						isSnapped = true;
+						currentSnappedObject = ioCheck.gameObject;
+						if (cloneNewOnUnsnap) {
+							CreatePermanentClone ();
+						}
 
-                    transitionInPlace = StartCoroutine(UpdateTransformDimensions(ioCheck, highlightContainer, newLocalScale, snapDuration));
+						transitionInPlace = StartCoroutine (UpdateTransformDimensions (ioCheck, highlightContainer, newLocalScale, snapDuration));
 
-                    ioCheck.ToggleSnapDropZone(this, true);
-                }
-            }
+						ioCheck.ToggleSnapDropZone (this, true);
+					}
+				}
 
-            //Force reset isSnapped if the item is grabbed but isSnapped is still true
-            isSnapped = (isSnapped && ioCheck && ioCheck.IsGrabbed() ? false : isSnapped);
-            wasSnapped = false;
-        }
+				//Force reset isSnapped if the item is grabbed but isSnapped is still true
+				isSnapped = (isSnapped && ioCheck && ioCheck.IsGrabbed () ? false : isSnapped);
+				wasSnapped = false;
+			}
+		}
 
         protected virtual void CreatePermanentClone()
         {
