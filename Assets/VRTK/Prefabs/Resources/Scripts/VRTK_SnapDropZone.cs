@@ -287,7 +287,8 @@ namespace VRTK
 		public float Distancele;
 		private Vector3 center; 
 
-		GameObject checkObject1;
+	//	GameObject checkObject1;
+	//	public bool objectisgrabbed; 
 
         protected virtual void Update()
         {
@@ -298,14 +299,16 @@ namespace VRTK
 			GameObject right = GameObject.Find ("RightHand");
 			posright = right.GetComponent<PositionRightHand> ().positionright;
 
-			var ioCheck1 = checkObject1.GetComponentInParent<VRTK_InteractableObject>();
-			if (ioCheck1.IsGrabbed==true) 
+		/*	var ioCheck1 = checkObject1.GetComponentInParent<VRTK_InteractableObject>();
+			objectisgrabbed = ioCheck1.IsGrabbed () ? true: true;
+			if (objectisgrabbed != true) {*/
 
-			Distanceri = Vector3.Distance (posright,center);
-			Debug.Log (Distanceri);
+				Distanceri = Vector3.Distance (posright, center);
+				Debug.Log (Distanceri);
 
-			Distancele = Vector3.Distance (posleft,center);
-			Debug.Log (Distancele);
+				Distancele = Vector3.Distance (posleft, center);
+				Debug.Log (Distancele);
+			//}
 
             CheckSnappedItemExists();
             CheckPrefabUpdate();
