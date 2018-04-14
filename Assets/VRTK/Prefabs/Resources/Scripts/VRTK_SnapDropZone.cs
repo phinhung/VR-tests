@@ -287,9 +287,10 @@ namespace VRTK
 		public float Distancele;
 		private Vector3 center; 
 
-	//	GameObject checkObject1;
-	//	public bool objectisgrabbed; 
 
+	GameObject checkObject1;
+		public bool objectisgrabbed; 
+	
         protected virtual void Update()
         {
 			GameObject left = GameObject.Find ("LeftHand");
@@ -299,16 +300,21 @@ namespace VRTK
 			GameObject right = GameObject.Find ("RightHand");
 			posright = right.GetComponent<PositionRightHand> ().positionright;
 
-		/*	var ioCheck1 = checkObject1.GetComponentInParent<VRTK_InteractableObject>();
-			objectisgrabbed = ioCheck1.IsGrabbed () ? true: true;
-			if (objectisgrabbed != true) {*/
+	
+			GameObject ju = GameObject.Find("Jupiter");
+			var jugrabbed = ju.GetComponentInParent<VRTK_InteractableObject> ();
+			objectisgrabbed = jugrabbed.IsGrabbed ();
+			//var ioCheck1 = checkObject1.GetComponentInParent<VRTK_InteractableObject>();
 
+			//	objectisgrabbed = ioCheck1.IsGrabbed () ? true: true;
+			//	ioCheck1.SaveCurrentState ();
+			if (objectisgrabbed == true) {
 				Distanceri = Vector3.Distance (posright, center);
 				Debug.Log (Distanceri);
 
 				Distancele = Vector3.Distance (posleft, center);
 				Debug.Log (Distancele);
-			//}
+		}
 
             CheckSnappedItemExists();
             CheckPrefabUpdate();
