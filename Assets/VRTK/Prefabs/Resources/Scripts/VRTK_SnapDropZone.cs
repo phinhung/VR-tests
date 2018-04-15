@@ -304,10 +304,6 @@ namespace VRTK
 			GameObject ju = GameObject.Find("Jupiter");
 			var jugrabbed = ju.GetComponentInParent<VRTK_InteractableObject> ();
 			objectisgrabbed = jugrabbed.IsGrabbed ();
-			//var ioCheck1 = checkObject1.GetComponentInParent<VRTK_InteractableObject>();
-
-			//	objectisgrabbed = ioCheck1.IsGrabbed () ? true: true;
-			//	ioCheck1.SaveCurrentState ();
 			if (objectisgrabbed == true) {
 				Distanceri = Vector3.Distance (posright, center);
 				Debug.Log (Distanceri);
