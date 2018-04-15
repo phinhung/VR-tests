@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Floor.unity
+    guid: 208ef17d010b7514c9bdf18c3e1f333f
+  - enabled: 1
+    path: Assets/Jupiter.unity
+    guid: 3d849573e2004ec418e7254c7aaa05f5
+  - enabled: 1
+    path: Assets/Planeten.unity
+    guid: fbe087e39009f384f943035adbcc2605

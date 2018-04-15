@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using UnityEngine.SceneManagement;
 
 public class rotation1 : MonoBehaviour {
 
@@ -37,17 +38,8 @@ public class rotation1 : MonoBehaviour {
 
 			RotationPlaneten (); 
 			//rotieren, wenn Planet an richtiger Stelle
-
-
-
-
-		}
-
+			}
 
 	}
-		
-			//prüfen, ob Planeten an richtiger Stelle
-
-
 	}
 
