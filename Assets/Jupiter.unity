@@ -884,7 +884,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 121
+      value: 633
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
@@ -2119,6 +2119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bahn: {fileID: 333225713}
   speed: 100
+  task1finished: 0
+  delay: 1
 --- !u!1 &1977122305
 GameObject:
   m_ObjectHideFlags: 0
