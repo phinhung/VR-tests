@@ -45,7 +45,7 @@ public class rotation1 : MonoBehaviour {
 			ModeSelect ();
 
 		}}
-		public float delay = 30f;
+		public float delay = 2f;
 	public void ModeSelect(){
 		StartCoroutine ("Wait");
 	}
@@ -62,7 +62,7 @@ public class rotation1 : MonoBehaviour {
 		public void NextTask()
 		{	
 			SceneManager.UnloadScene ("Jupiter");
-			Invoke ("LoadNextScene", delay);
+		LoadNextScene ();
 		}
 
 	
