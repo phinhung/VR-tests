@@ -12,7 +12,7 @@ public class rotation1 : MonoBehaviour {
 	public bool task1finished;
 
 
-	void RotationPlaneten(){
+	public	void RotationPlaneten(){
 
 		transform.RotateAround (Bahn.transform.position, Vector3.up, speed * Time.deltaTime); //Rotieren des Planeten
 	}
@@ -32,19 +32,26 @@ public class rotation1 : MonoBehaviour {
 
 
 			GameObject snapj = GameObject.Find("SnapDropZone");
-			isSnappedj = snapj.GetComponent<VRTK_SnapDropZone> ().isSnapped; 
-
+//			isSnappedj = snapj.GetComponent<VRTK_SnapDropZone> ().isSnapped; 
 		if (isSnappedj == true)
 		{
-
+			Debug.Log (isSnappedj);
 			RotationPlaneten (); 
 			task1finished = true;
 			//rotieren, wenn Planet an richtiger Stelle
-			}
-		if (task1finished==true){
+		}
+		if (task1finished == true) {
 			ModeSelect ();
+		}
+		}
 
-		}}
+	public void rotate(){
+		isSnappedj = true;
+	
+
+	}
+
+
 		public float delay = 2f;
 	public void ModeSelect(){
 		StartCoroutine ("Wait");
