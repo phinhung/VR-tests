@@ -47,8 +47,6 @@ public class rotation1 : MonoBehaviour {
 
 	public void rotate(){
 		isSnappedj = true;
-	
-
 	}
 
 
