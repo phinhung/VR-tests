@@ -40,9 +40,17 @@ public class Snap : MonoBehaviour {
 			if (allowsnap == true){
 				Debug.Log (Distanceri);
 				Debug.Log (Distancele);
-				if (objectisgrabbed == false && (Distancele > alloweddistance | Distanceri > alloweddistance)) {
-					
+				if (objectisgrabbed == true && (Distancele < alloweddistance | Distanceri < alloweddistance)) {
+					GetComponent<VRTK_SnapDropZone>().enabled = false;
+					GetComponent<SphereCollider>().enabled = false;
+					Debug.Log ("no");
+				}
+				if (objectisgrabbed == true && (Distancele > alloweddistance | Distanceri > alloweddistance)) {
+					GetComponent<VRTK_SnapDropZone>().enabled = true;
+					GetComponent<SphereCollider>().enabled = true;
 					//GetComponent<VRTK_SnapDropZone> ().ForceSnap (ju);
+					Debug.Log ("yes");
+
 				}
 			}
 		}
@@ -55,8 +63,8 @@ public class Snap : MonoBehaviour {
 	//	SnapZoneScript.ForceSnap ();
 	}
 	public void distance(){
-		if (Distancele >alloweddistance | Distanceri>alloweddistance){
+		
 			allowsnap = true;
-		} 
+	 
 	}
 }
