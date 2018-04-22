@@ -13,10 +13,7 @@ public class Snap : MonoBehaviour {
 	float Distancele;
 	public float alloweddistance;
 	public GameObject ju;
-	public bool allowsnap;
-	bool active;
-
-
+	public bool allowsnap;	
 
 
 	// Update is called once per frame
@@ -44,8 +41,8 @@ public class Snap : MonoBehaviour {
 				Debug.Log (Distanceri);
 				Debug.Log (Distancele);
 				if (objectisgrabbed == false && (Distancele > alloweddistance | Distanceri > alloweddistance)) {
-					active = GetComponent<VRTK_SnapDropZone> ().isActiveAndEnabled;
-					GetComponent<VRTK_SnapDropZone> ().ForceSnap (ju);
+					
+					//GetComponent<VRTK_SnapDropZone> ().ForceSnap (ju);
 				}
 			}
 		}
